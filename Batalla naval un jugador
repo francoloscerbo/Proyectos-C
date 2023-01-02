@@ -1,5 +1,3 @@
-Bucamina con un jugador
-
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
