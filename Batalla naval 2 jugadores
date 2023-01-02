@@ -1,5 +1,3 @@
-# Batalla naval 2 jugadores
-
 #include <iostream>
 #include <stdlib.h>
 
