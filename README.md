@@ -1,0 +1,386 @@
+# Proyectos-C
+Buscamina con 2 jugadores
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+#define TRUE 1
+#define FALSE 0
+
+const char nombre[10] = "Franco";
+const char apellido[10] = "Loscerbo";
+
+int main(){
+
+    int matriz[10][10];
+    int matriz1[10][10];
+    int matriz2[10][10];
+    int pos_f;
+    int pos_c;
+    int op;
+    int val;
+    int barco1=0;
+    int barco2=0;
+    int barco3=0;
+    char juj;
+    char cum = '#';
+    char resp = 's';
+    char repetir = TRUE;
+
+    do{
+            system("cls");
+
+                    printf ("\n\t\tMenu de opciones \n\n");
+                    printf ("\t1) Crear tablero\n");
+                    printf ("\t2) Jugar\n");
+                    printf ("\t3) Mostrar tablero\n");
+                    printf ("\t4) Creditos\n");
+                    printf ("\t5) Finalizar partida\n\n");
+                    printf ("\t Ingrese una opcion: ");
+                    scanf("%i",&op);
+
+        switch(op){
+
+            case 1:
+
+
+                for(int i = 0; i < 10; i++){
+                    for(int j = 0; j < 10; j++){
+                        matriz[i][j] = 0;
+                    }
+                }
+                        matriz[2][1] = 1;
+                        matriz[2][2] = 1;
+                        matriz[2][3] = 1;
+                        matriz[4][4] = 1;
+                        matriz[5][4] = 1;
+                        matriz[6][4] = 1;
+                        matriz[8][6] = 1;
+                        matriz[8][7] = 1;
+                        matriz[8][8] = 1;
+
+                        for(int i = 0; i < 10; i++){
+                    for(int j = 0; j < 10; j++){
+                        matriz1[i][j] = 3;
+                    }
+                }
+                for(int i = 0; i < 10; i++){
+                    for(int j = 0; j < 10; j++){
+                        matriz2[i][j] = 4;
+                    }
+                }
+
+
+                break;
+
+            case 2:
+                do{
+
+
+                for(int p = 0; p < 2; p++){
+
+                    switch(p){
+
+                    case 1: printf("   A");
+                    case 2: printf("  B");
+                    case 3: printf("  C");
+                    case 4: printf("  D");
+                    case 5: printf("  E");
+                    case 6: printf("  F");
+                    case 7: printf("  G");
+                    case 8: printf("  H");
+                    case 9: printf("  I");
+                    case 10: printf("  J");
+
+                    }
+                }
+
+                for(int i = 0; i < 10; i++){
+                        printf("\n");
+                        cout << i + 1 << " ";
+                    for(int j = 0; j < 10; j++){
+                         printf("[%i]",matriz1[i][j]);
+                    }
+                }
+
+
+                    printf("\n");
+                    printf("\n\tTURNO JUGADOR 1");
+                    printf("\n\tIngrese la prosicion de la fila: ");
+                    scanf("%d",&pos_f);
+                    pos_f = pos_f -1;
+                    printf ("\n\tIngrese la posicion de la columna: ");
+                    scanf("%s",&juj);
+
+                    switch(juj){
+                    case 'A': pos_c = 0;break;
+                    case 'B': pos_c = 1;break;
+                    case 'C': pos_c = 2;break;
+                    case 'D': pos_c = 3;break;
+                    case 'E': pos_c = 4;break;
+                    case 'F': pos_c = 5;break;
+                    case 'G': pos_c = 6;break;
+                    case 'H': pos_c = 7;break;
+                    case 'I': pos_c = 8;break;
+                    case 'J': pos_c = 9;break;
+                    }
+
+                    printf("%i",pos_f);
+                    printf("%i",pos_c);
+
+                    if(matriz1[2][1] == 1 && matriz1[2][2] == 1 && matriz1[2][2] == 1){
+                        printf("\n\tDerribo el barco 1");
+                        barco1 = 1;
+                    }
+
+                    if(matriz1[4][4] == 1 && matriz1[4][5] == 1 && matriz1[4][6] == 1){
+                        printf("\n\tDerribo el barco 2");
+                        barco2 = 1;
+                    }
+
+                    if(matriz1[8][6] == 1 && matriz1[8][7] == 1 && matriz1[8][8] == 1){
+                        printf("\n\tDerribo el barco 3");
+                        barco3 = 1;
+                    }
+
+                    if(barco1 == 1 && barco2 == 1 && barco3 == 1){
+                        printf("HA GANADO!!!");
+                        system("pause");
+                        repetir = FALSE;
+                    }
+
+                    if(matriz1[pos_f][pos_c] == 0 && matriz1[pos_f][pos_c] == 1){
+                        printf("\n\tPocicion ya descubierta");
+                    }
+
+                    if(matriz[pos_f][pos_c] == 1){
+                        printf("\n\tToco un barco");
+                         matriz1[pos_f][pos_c] = 1;
+                    }
+
+                    else{
+                        printf("\n\tToco agua");
+                        matriz1[pos_f][pos_c] = 0;
+                    }
+                    system("cls");
+
+                    for(int p = 0; p < 2; p++){
+
+                    switch(p){
+
+                    case 1: printf("   A");
+                    case 2: printf("  B");
+                    case 3: printf("  C");
+                    case 4: printf("  D");
+                    case 5: printf("  E");
+                    case 6: printf("  F");
+                    case 7: printf("  G");
+                    case 8: printf("  H");
+                    case 9: printf("  I");
+                    case 10: printf("  J");
+
+                    }
+                }
+
+                    for(int i = 0; i < 10; i++){
+                        printf("\n");
+                        cout << i + 1 << " ";
+                    for(int j = 0; j < 10; j++){
+
+                                    if(matriz1[pos_f][pos_c] == 1)
+                                {
+                                     printf("[%i]",matriz1[i][j]);
+                                } else if(matriz1[pos_f][pos_c] == 0){
+                                    printf("[%i]",matriz1[i][j]);
+                                }
+
+
+                    }
+                }
+
+
+                    system("pause");
+                    system("cls");
+
+                    for(int p = 0; p < 2; p++){
+
+                    switch(p){
+
+                    case 1: printf("   A");
+                    case 2: printf("  B");
+                    case 3: printf("  C");
+                    case 4: printf("  D");
+                    case 5: printf("  E");
+                    case 6: printf("  F");
+                    case 7: printf("  G");
+                    case 8: printf("  H");
+                    case 9: printf("  I");
+                    case 10: printf("  J");
+
+                    }
+                }
+
+                for(int i = 0; i < 10; i++){
+                        printf("\n");
+                        cout << i + 1 << " ";
+                    for(int j = 0; j < 10; j++){
+                         printf("[%i]",matriz2[i][j]);
+                    }
+                }
+
+
+                    printf("\n");
+                    printf("\n\tTURNO JUGADOR 2");
+                    printf("\n\tIngrese la prosicion de la fila: ");
+                    scanf("%d",&pos_f);
+                    pos_f = pos_f -1;
+                    printf ("\n\tIngrese la posicion de la columna: ");
+                    scanf("%s",&juj);
+
+                    switch(juj){
+                    case 'A': pos_c = 0;break;
+                    case 'B': pos_c = 1;break;
+                    case 'C': pos_c = 2;break;
+                    case 'D': pos_c = 3;break;
+                    case 'E': pos_c = 4;break;
+                    case 'F': pos_c = 5;break;
+                    case 'G': pos_c = 6;break;
+                    case 'H': pos_c = 7;break;
+                    case 'I': pos_c = 8;break;
+                    case 'J': pos_c = 9;break;
+                    }
+
+                    printf("%i",pos_f);
+                    printf("%i",pos_c);
+
+                    if(matriz2[2][1] == 1 && matriz2[2][2] == 1 && matriz2[2][2] == 1){
+                        printf("\n\tDerribo el barco 1");
+                        barco1 = 1;
+                    }
+
+                    if(matriz2[4][4] == 1 && matriz2[4][5] == 1 && matriz2[4][6] == 1){
+                        printf("\n\tDerribo el barco 2");
+                        barco2 = 1;
+                    }
+
+                    if(matriz2[8][6] == 1 && matriz2[8][7] == 1 && matriz2[8][8] == 1){
+                        printf("\n\tDerribo el barco 3");
+                        barco3 = 1;
+                    }
+
+                    if(barco1 == 1 && barco2 == 1 && barco3 == 1){
+                        printf("HA GANADO EL JUGADRO 2!!!");
+                        system("pause");
+                        repetir = FALSE;
+                    }
+
+                    if(matriz2[pos_f][pos_c] == 0 && matriz2[pos_f][pos_c] == 1){
+                        printf("\n\tPocicion ya descubierta");
+                    }
+
+                    if(matriz[pos_f][pos_c] == 1){
+                        printf("\n\tToco un barco");
+                         matriz2[pos_f][pos_c] = 1;
+                    }
+
+                    else{
+                        printf("\n\tToco agua");
+                        matriz2[pos_f][pos_c] = 0;
+                    }
+                    system("cls");
+
+                    for(int p = 0; p < 2; p++){
+
+                    switch(p){
+
+                    case 1: printf("   A");
+                    case 2: printf("  B");
+                    case 3: printf("  C");
+                    case 4: printf("  D");
+                    case 5: printf("  E");
+                    case 6: printf("  F");
+                    case 7: printf("  G");
+                    case 8: printf("  H");
+                    case 9: printf("  I");
+                    case 10: printf("  J");
+
+                    }
+                }
+
+                    for(int i = 0; i < 10; i++){
+                        printf("\n");
+                        cout << i + 1 << " ";
+                    for(int j = 0; j < 10; j++){
+
+                                    if(matriz2[pos_f][pos_c] == 1)
+                                {
+                                     printf("[%i]",matriz2[i][j]);
+                                } else if(matriz2[pos_f][pos_c] == 0){
+                                    printf("[%i]",matriz2[i][j]);
+                                }
+
+
+                    }
+                }
+                system("pause");
+
+
+
+
+                    printf("\n\tDesea continuar? ");
+                    scanf("%s",&resp);
+                    system("cls");
+
+                    }while(resp == 's' || resp == 'S');
+                    break;
+
+            case 3:
+
+                for(int p = 0; p < 2; p++){
+
+                    switch(p){
+
+                    case 1: printf("   A");
+                    case 2: printf("  B");
+                    case 3: printf("  C");
+                    case 4: printf("  D");
+                    case 5: printf("  E");
+                    case 6: printf("  F");
+                    case 7: printf("  G");
+                    case 8: printf("  H");
+                    case 9: printf("  I");
+                    case 10: printf("  J");
+
+                    }
+                }
+
+                for(int t = 0; t < 10; t++){
+                    cout << endl;
+                    cout << t + 1 << " ";
+                    for(int e = 0; e < 10; e++){
+                        cout << "[" << matriz[t][e] << "]";
+                    }
+                }
+
+
+                break;
+
+            case 4:
+                printf("\n\tEl creador del juego es: %s %s\n\n",nombre,apellido);
+                break;
+
+            case 5:
+                repetir = FALSE;
+            }
+            if(op < 1 || op > 5){
+                cout << "la opcion ingresada no es valida intente nuevamente" << endl;
+
+            }
+            if(op != 5){
+                system("pause");
+                system("cls");
+            }
+            }while(repetir);
+    return 0;
+}
