@@ -1,7 +1,4 @@
-# Proyectos-C
-Buscamina con 2 jugadores
-
-
+# Batalla naval 2 jugadores
 
 #include <iostream>
 #include <stdlib.h>
